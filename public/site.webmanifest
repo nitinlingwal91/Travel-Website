@@ -1,0 +1,9 @@
+{
+  "name": "Travel Website",
+  "short_name": "Travel",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": []
+}
