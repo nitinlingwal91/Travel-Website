@@ -1,3 +1,4 @@
+import type { Route } from "next";
 import Image from "next/image";
 import Container from "@/components/shared/Container";
 import SectionTitle from "@/components/shared/SectionTitle";
@@ -59,46 +60,50 @@ export default function PopularDestinations() {
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {destinations.map((destination) => (
-            <article
-              key={destination.slug}
-              className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-stone-50 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-            >
-              <div className="grid md:grid-cols-[1.2fr_1fr]">
-                <div className="relative overflow-hidden min-h-72">
-                  <Image
-                    src={destination.image}
-                    alt={destination.name}
-                    fill
-                    className="object-cover transition duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
+          {destinations.map((destination) => {
+            const destinationHref = `/destinations/${destination.slug}` as Route;
 
-                <div className="flex flex-col justify-between p-6 sm:p-8">
-                  <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">
-                      {destination.trips}
-                    </p>
-
-                    <h3 className="mt-3 text-2xl font-bold tracking-tight text-slate-900">
-                      {destination.name}
-                    </h3>
-
-                    <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                      {destination.description}
-                    </p>
+            return (
+              <article
+                key={destination.slug}
+                className="group overflow-hidden rounded-[1.75rem] border border-slate-200 bg-stone-50 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              >
+                <div className="grid md:grid-cols-[1.2fr_1fr]">
+                  <div className="relative overflow-hidden min-h-72">
+                    <Image
+                      src={destination.image}
+                      alt={destination.name}
+                      fill
+                      className="object-cover transition duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
                   </div>
 
-                  <div className="mt-8">
-                    <Button href={`/destinations/${destination.slug}`}>
-                      Explore Destination
-                    </Button>
+                  <div className="flex flex-col justify-between p-6 sm:p-8">
+                    <div>
+                      <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-700">
+                        {destination.trips}
+                      </p>
+
+                      <h3 className="mt-3 text-2xl font-bold tracking-tight text-slate-900">
+                        {destination.name}
+                      </h3>
+
+                      <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
+                        {destination.description}
+                      </p>
+                    </div>
+
+                    <div className="mt-8">
+                      <Button href={destinationHref}>
+                        Explore Destination
+                      </Button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </Container>
     </section>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Route } from "next";
 import Button from "@/components/shared/Button";
 import Badge from "@/components/shared/Badge";
 
@@ -64,7 +65,7 @@ export default function TripCard({ trip }: TripCardProps) {
         </div>
 
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <Button href={`/trips/${trip.slug}`}>View Details</Button>
+          <Button href={`/trips/${trip.slug}` as Route}>View Details</Button>
 
           <Link
             href="/contact"

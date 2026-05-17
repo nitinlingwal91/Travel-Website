@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { Route } from "next";
 import { notFound } from "next/navigation";
 import Container from "@/components/shared/Container";
 import SectionTitle from "@/components/shared/SectionTitle";
@@ -43,6 +44,9 @@ export default async function BookingPage({ params }: BookingPageProps) {
   if (!trip) {
     notFound();
   }
+
+  const inquiryHref = `/inquiry?trip=${trip.slug}` as Route;
+  const tripDetailsHref = `/trips/${trip.slug}` as Route;
 
   return (
     <section className="bg-stone-50 py-16 sm:py-20">
@@ -107,12 +111,12 @@ export default async function BookingPage({ params }: BookingPageProps) {
             </p>
 
             <div className="mt-8 space-y-4">
-              <Button href={`/inquiry?trip=${trip.slug}`} className="w-full">
+              <Button href={inquiryHref} className="w-full">
                 Continue to Inquiry
               </Button>
 
               <Button
-                href={`/trips/${trip.slug}`}
+                href={tripDetailsHref}
                 variant="secondary"
                 className="w-full"
               >

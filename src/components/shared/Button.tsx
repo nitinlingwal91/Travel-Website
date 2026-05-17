@@ -1,7 +1,8 @@
 import Link from "next/link";
+import type { Route } from "next";
 
 type ButtonProps = {
-  href: string;
+  href: Route;
   children: React.ReactNode;
   variant?: "primary" | "secondary";
   className?: string;
