@@ -45,9 +45,9 @@ export default function HomePage() {
       />
 
       <Hero />
-      <FeaturedTrips />
-      <PopularDestinations />
       <WhyChooseUs />
+      <PopularDestinations />
+      <FeaturedTrips />
       <Testimonials />
       <FaqPreview />
       <FinalCta />
