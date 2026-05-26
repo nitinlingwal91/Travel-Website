@@ -36,7 +36,7 @@ export default function Hero() {
   const contactHref = "/contact" as Route;
 
   return (
-    <section className="relative min-h-100svh overflow-hidden bg-slate-950 text-white">
+    <section className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
       <div className="absolute inset-0">
         {heroImages.map((image, index) => (
           <div
@@ -57,86 +57,105 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="absolute inset-0 bg-slate-950/55" />
-      <div className="absolute inset-0 bg-linear-to-b from-slate-950/60 via-slate-950/35 to-slate-950/80" />
-      <div className="absolute inset-0 bg-linear-to-r from-slate-950/55 via-transparent to-slate-950/55" />
+      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-linear-to-r from-black/60 via-black/25 to-black/40" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/65 via-transparent to-black/35" />
 
-      <Container className="relative z-10 flex min-h-100svh items-center justify-center py-24">
-        <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-          <p className="mb-6 inline-flex rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#f3d27a] backdrop-blur-md sm:text-sm">
-            Adventure trips across India
-          </p>
+      <Container className="relative z-10 flex min-h-screen items-end py-12 sm:py-16 lg:py-20">
+        <div className="grid w-full gap-10 pt-28 sm:pt-32 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:pt-36">
+          <div className="max-w-3xl">
+            <p className="mb-5 text-xs font-medium uppercase tracking-[0.28em] text-white/70 sm:text-sm">
+              Curated journeys across India
+            </p>
 
-          <h1 className="text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-7xl">
-            Travel more. Spend wisely. Explore mountains with the right people.
-          </h1>
+            <h1 className="max-w-2xl text-4xl font-semibold leading-[1.02] tracking-tighter text-white sm:text-5xl lg:text-7xl">
+              Discover mountains, slow travel, and meaningful group escapes.
+            </h1>
 
-          <p className="mt-6 max-w-2xl text-base leading-8 text-slate-200 sm:text-lg">
-            Discover budget-friendly backpacking journeys, weekend escapes, trekking
-            adventures, and curated group trips designed for unforgettable experiences.
-          </p>
+            <p className="mt-6 max-w-xl text-sm leading-7 text-white/80 sm:text-base sm:leading-8">
+              Thoughtfully designed trips for travelers who want better routes,
+              better stays, and a better kind of travel experience.
+            </p>
 
-          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row">
-            <Button
-              href={exploreHref}
-              className="bg-[#d4a017] text-slate-950 hover:bg-[#e0b84b]"
-            >
-              Explore Trips
-            </Button>
-
-            <Button
-              href={contactHref}
-              variant="secondary"
-              className="border border-white/30 bg-white/10 text-white hover:bg-white/20"
-            >
-              Plan Your Trip
-            </Button>
-          </div>
-
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            {["Kasol", "Manali", "Jibhi", "Kedarkantha", "Spiti", "Sissu"].map((place) => (
-              <span
-                key={place}
-                className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-md"
+            <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+              <Button
+                href={exploreHref}
+                className="rounded-full bg-white px-6 py-3 text-slate-950 hover:bg-white/90"
               >
-                {place}
-              </span>
-            ))}
+                Explore Trips
+              </Button>
+
+              <Button
+                href={contactHref}
+                variant="secondary"
+                className="rounded-full border border-white/25 bg-white/10 px-6 py-3 text-white hover:bg-white/20"
+              >
+                Plan Your Trip
+              </Button>
+            </div>
+
+            <div className="mt-10 flex flex-wrap gap-3">
+              {["Himachal", "Uttarakhand", "Kashmir", "Spiti", "Weekend Escapes"].map(
+                (item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-medium tracking-[0.08em] text-white/85 backdrop-blur-sm sm:text-sm"
+                  >
+                    {item}
+                  </span>
+                )
+              )}
+            </div>
           </div>
 
-          <div className="mt-12 grid w-full max-w-3xl gap-4 sm:grid-cols-3">
-            <div className="rounded-3xl border border-white/10 bg-white/10 p-5 text-center backdrop-blur-md">
-              <p className="text-3xl font-bold text-white">50+</p>
-              <p className="mt-2 text-sm leading-6 text-slate-200">
-                Curated departures and adventure experiences.
+          <div className="lg:ml-auto lg:w-full lg:max-w-md">
+            <div className="rounded-[28px] border border-white/15 bg-white/10 p-5 backdrop-blur-md sm:p-6">
+              <p className="text-xs font-medium uppercase tracking-[0.24em] text-white/60">
+                Why travelers choose us
               </p>
-            </div>
 
-            <div className="rounded-3xl border border-white/10 bg-white/10 p-5 text-center backdrop-blur-md">
-              <p className="text-3xl font-bold text-white">4.8/5</p>
-              <p className="mt-2 text-sm leading-6 text-slate-200">
-                Loved for support, value, and travel community.
-              </p>
-            </div>
+              <div className="mt-6 space-y-5">
+                <div className="border-b border-white/10 pb-5">
+                  <p className="text-3xl font-semibold tracking-[-0.04em] text-white">
+                    50+
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-white/75">
+                    Curated departures, backpacking journeys, and mountain getaways.
+                  </p>
+                </div>
 
-            <div className="rounded-3xl border border-white/10 bg-white/10 p-5 text-center backdrop-blur-md">
-              <p className="text-3xl font-bold text-white">24/7</p>
-              <p className="mt-2 text-sm leading-6 text-slate-200">
-                Assistance before, during, and after every trip.
-              </p>
+                <div className="border-b border-white/10 pb-5">
+                  <p className="text-3xl font-semibold tracking-[-0.04em] text-white">
+                    4.8/5
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-white/75">
+                    Highly rated for value, trip planning support, and group experience.
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-3xl font-semibold tracking-[-0.04em] text-white">
+                    24/7
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-white/75">
+                    Help before departure, during the trip, and after you return.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </Container>
 
-      <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+      <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 gap-2 sm:bottom-8">
         {heroImages.map((_, index) => (
           <button
             key={index}
+            type="button"
             aria-label={`Go to slide ${index + 1}`}
             onClick={() => setActiveIndex(index)}
-            className={`h-2.5 rounded-full transition-all ${
-              index === activeIndex ? "w-10 bg-[#d4a017]" : "w-2.5 bg-white/50"
+            className={`h-2 rounded-full transition-all ${
+              index === activeIndex ? "w-10 bg-white" : "w-2 bg-white/45"
             }`}
           />
         ))}

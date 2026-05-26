@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useState } from "react";
 import type { Route } from "next";
 import Container from "../shared/Container";
-import Button from "../shared/Button";
 
 const navLinks: { href: Route; label: string }[] = [
   { href: "/", label: "Home" },
@@ -19,41 +18,44 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/90 backdrop-blur">
-      <Container className="flex h-16 items-center justify-between">
+    <header className="absolute inset-x-0 top-0 z-50">
+      <Container className="flex h-20 items-center justify-between">
         <Link
           href="/"
-          className="text-xl font-bold tracking-tight text-slate-900"
+          className="text-2xl font-semibold tracking-[-0.04em] text-white"
           onClick={() => setOpen(false)}
         >
-          Travel <span className="text-teal-700">Website</span>
+          Mad For Trip
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden md:flex items-center rounded-full border border-white/15 bg-white/10 px-3 py-2 backdrop-blur-md">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-slate-700 transition hover:text-teal-700"
+              className="rounded-full px-4 py-2 text-sm font-medium text-white/85 transition hover:bg-white/10 hover:text-white"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden md:block">
-          <Button href="/contact">Plan Your Trip</Button>
-        </div>
+        <Link
+          href={"/contact" as Route}
+          className="hidden md:inline-flex items-center rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20"
+        >
+          Plan Your Trip
+        </Link>
 
         <button
           type="button"
           onClick={() => setOpen((prev) => !prev)}
-          className="inline-flex items-center justify-center rounded-md p-2 text-slate-700 md:hidden"
+          className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 p-2 text-white backdrop-blur-sm md:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           aria-controls="mobile-menu"
         >
-          <span className="text-2xl leading-none" aria-hidden="true">
+          <span className="text-xl leading-none" aria-hidden="true">
             {open ? "✕" : "☰"}
           </span>
         </button>
@@ -61,14 +63,16 @@ export default function Header() {
 
       <div
         id="mobile-menu"
-        className={`${open ? "block" : "hidden"} border-t border-slate-200 bg-white md:hidden`}
+        className={`${
+          open ? "block" : "hidden"
+        } border-t border-white/10 bg-black/45 backdrop-blur-xl md:hidden`}
       >
-        <Container className="flex flex-col items-center gap-6 py-8 text-center">
+        <Container className="flex flex-col items-start gap-5 py-6">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="text-lg font-medium text-slate-700 transition hover:text-teal-700"
+              className="text-base font-medium text-white/90 transition hover:text-white"
               onClick={() => setOpen(false)}
             >
               {link.label}
@@ -76,9 +80,9 @@ export default function Header() {
           ))}
 
           <Link
-            href="/contact"
+            href={"/contact" as Route}
             onClick={() => setOpen(false)}
-            className="inline-flex w-full max-w-sm items-center justify-center rounded-md bg-teal-700 px-6 py-3 text-sm font-semibold text-white transition hover:bg-teal-800"
+            className="mt-2 inline-flex items-center rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20"
           >
             Plan Your Trip
           </Link>

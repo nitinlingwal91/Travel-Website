@@ -1,82 +1,90 @@
 import Container from "@/components/shared/Container";
-import SectionTitle from "@/components/shared/SectionTitle";
 
-const reasons = [
+const trustPoints = [
   {
-    title: "Transparent pricing",
+    title: "Clear pricing",
     description:
-      "No confusing package language. We keep trip inclusions, exclusions, and pricing details clear so travelers know exactly what they are paying for.",
+      "Trip inclusions, exclusions, and costs are presented simply so travelers understand what they are booking.",
   },
   {
-    title: "Curated small-group experiences",
+    title: "Smaller groups",
     description:
-      "Our trips are designed for travelers who want adventure, community, and a smoother experience without the chaos of overcrowded group travel.",
+      "Our journeys are designed for better coordination, better experiences, and a more personal travel atmosphere.",
   },
   {
-    title: "Responsive travel support",
+    title: "Responsive support",
     description:
-      "From planning your route to handling on-trip questions, our team stays available before departure and throughout the journey.",
-  },
-  {
-    title: "Destination-first trip design",
-    description:
-      "Each itinerary is built around the actual destination experience, not just transport and hotel listings, so the trip feels memorable and practical.",
+      "From planning questions to on-trip help, our team stays available when travelers actually need assistance.",
   },
 ];
 
-const trustPoints = [
-  "Verified traveler reviews and real trip feedback",
-  "Clear cancellation and refund information",
-  "Mobile-friendly inquiry and booking journey",
-  "Fast support for trip planning and doubts",
+const highlights = [
+  "Verified traveler feedback",
+  "Carefully selected itineraries",
+  "Quick response for trip queries",
+  "Designed for mobile-first browsing",
 ];
 
 export default function WhyChooseUs() {
   return (
-    <section className="bg-stone-50 py-20">
+    <section className="bg-[#f6f1ea] py-20 sm:py-24">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-          <div>
-            <SectionTitle
-              eyebrow="Why choose us"
-              title="Built for travelers who want confidence before they commit"
-              description="A great travel website should reduce uncertainty, answer important questions clearly, and help visitors feel supported from the moment they land on the page."
-            />
+        <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
+          <div className="max-w-xl">
+            <p className="text-xs font-medium uppercase tracking-[0.24em] text-slate-500 sm:text-sm">
+              Why travel with us
+            </p>
 
-            <div className="mt-8 space-y-4">
-              {trustPoints.map((point) => (
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-slate-900 sm:text-4xl">
+              Built to make travel decisions feel easier, clearer, and more reliable.
+            </h2>
+
+            <p className="mt-5 text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
+              Great travel planning starts with clarity. We focus on transparent
+              information, thoughtful itineraries, and support that helps travelers
+              feel confident before they book.
+            </p>
+
+            <div className="mt-8 space-y-3">
+              {highlights.map((item) => (
                 <div
-                  key={point}
-                  className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-sm"
+                  key={item}
+                  className="flex items-center gap-3 rounded-full border border-slate-300/70 bg-white/70 px-4 py-3"
                 >
-                  <div className="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-teal-700 text-sm font-bold text-white">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900 text-xs text-white">
                     ✓
-                  </div>
-
-                  <p className="text-sm leading-7 text-slate-700 sm:text-base">
-                    {point}
+                  </span>
+                  <p className="text-sm font-medium text-slate-700 sm:text-[15px]">
+                    {item}
                   </p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2">
-            {reasons.map((reason) => (
+          <div className="grid gap-4">
+            {trustPoints.map((point, index) => (
               <article
-                key={reason.title}
-                className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                key={point.title}
+                className="rounded-[28px] border border-slate-300/60 bg-white/80 p-6 sm:p-7"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-100 text-lg font-bold text-teal-700">
-                  {reason.title.charAt(0)}
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-400">
+                      0{index + 1}
+                    </p>
+                    <h3 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-slate-900">
+                      {point.title}
+                    </h3>
+                  </div>
+
+                  <span className="rounded-full border border-slate-200 bg-slate-100 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-slate-500">
+                    Trusted
+                  </span>
                 </div>
 
-                <h3 className="mt-5 text-xl font-bold tracking-tight text-slate-900">
-                  {reason.title}
-                </h3>
-
-                <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">
-                  {reason.description}
+                <p className="mt-4 max-w-lg text-sm leading-7 text-slate-600 sm:text-base">
+                  {point.description}
                 </p>
               </article>
             ))}
