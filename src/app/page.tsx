@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import Hero from "@/components/home/Hero";
 import FeaturedTrips from "@/components/home/FeaturedTrips";
 import PopularDestinations from "@/components/home/PopularDestinations";
-import WhyChooseUs from "@/components/home/WhyChooseUs";
-import Testimonials from "@/components/home/Testimonials";
-import FaqPreview from "@/components/home/FaqPreview";
+import TrustInfoCarousel from "@/components/home/TrustInfoCarousel";
 import FinalCta from "@/components/home/FinalCta";
 
 export const metadata: Metadata = {
@@ -47,9 +45,7 @@ export default function HomePage() {
       <Hero />
       <PopularDestinations />
       <FeaturedTrips />
-      <WhyChooseUs />
-      <Testimonials />
-      <FaqPreview />
+      <TrustInfoCarousel />
       <FinalCta />
     </>
   );

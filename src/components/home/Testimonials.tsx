@@ -1,113 +1,91 @@
+import Link from "next/link";
+import type { Route } from "next";
 import Container from "@/components/shared/Container";
-import SectionTitle from "@/components/shared/SectionTitle";
-import Button from "@/components/shared/Button";
 
 const testimonials = [
   {
     name: "Aman Sharma",
     trip: "Kasol Kheerganga Backpacking",
-    rating: "5.0",
     review:
       "Everything felt smooth from the first inquiry to the final day of the trip. The group vibe was great, the stay was comfortable, and the whole experience felt worth every rupee.",
   },
   {
     name: "Neha Verma",
     trip: "Kedarkantha Winter Trek",
-    rating: "4.9",
     review:
       "This was my first trek and I was honestly nervous, but the team explained everything clearly and kept the experience beginner-friendly. I would happily travel with them again.",
   },
   {
     name: "Rohit Bisht",
     trip: "Jibhi Tirthan Escape",
-    rating: "5.0",
     review:
       "The itinerary felt well planned, not rushed. We had enough time to enjoy the place, take photos, and just relax. It was a very good balance of budget and experience.",
   },
 ];
 
 export default function Testimonials() {
+  const featured = testimonials[0];
+  const secondary = testimonials.slice(1);
+
   return (
-    <section className="bg-white py-20">
+    <section className="bg-[#fbf8f3] py-20 sm:py-24">
       <Container>
-        <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-          <SectionTitle
-            eyebrow="Traveler stories"
-            title="Real feedback from people who actually took the trip"
-            description="Social proof matters in travel. These reviews help new travelers understand the experience, the support quality, and the kind of value they can expect."
-          />
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl">
+            <p className="text-xs font-medium uppercase tracking-[0.24em] text-slate-500 sm:text-sm">
+              Traveler stories
+            </p>
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl lg:text-5xl">
+              Real words from people who actually took the trip.
+            </h2>
+            <p className="mt-5 max-w-xl text-sm leading-7 text-slate-600 sm:text-base">
+              Honest feedback helps new travelers understand the experience,
+              support quality, and the overall feel of each journey.
+            </p>
+          </div>
 
-          <Button href="/reviews" variant="secondary">
-            View All Reviews
-          </Button>
+          <Link
+            href={"/reviews" as Route}
+            className="inline-flex items-center self-start rounded-full border border-slate-300 bg-white/80 px-5 py-2.5 text-sm font-medium text-slate-900 transition hover:bg-white"
+          >
+            View all reviews
+          </Link>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {testimonials.map((testimonial) => (
-            <article
-              key={`${testimonial.name}-${testimonial.trip}`}
-              className="flex h-full flex-col rounded-3xl border border-slate-200 bg-stone-50 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
-            >
-              <div className="flex items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-teal-700 text-sm font-bold text-white">
-                    {testimonial.name
-                      .split(" ")
-                      .map((part) => part[0])
-                      .join("")
-                      .slice(0, 2)}
-                  </div>
+        <div className="mt-12 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+          <article className="rounded-4x1 border border-slate-300/60 bg-white/90 p-7 shadow-sm sm:p-8">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-slate-400">
+              Featured story
+            </p>
 
-                  <div>
-                    <h3 className="text-base font-bold text-slate-900">
-                      {testimonial.name}
-                    </h3>
-                    <p className="text-sm text-slate-600">{testimonial.trip}</p>
-                  </div>
-                </div>
+            <p className="mt-6 max-w-2xl text-2xl font-semibold leading-relaxed tracking-[-0.03em] text-slate-950 sm:text-3xl">
+              “{featured.review}”
+            </p>
 
-                <div className="rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-800">
-                  ★ {testimonial.rating}
-                </div>
-              </div>
-
-              <p className="mt-6 text-sm leading-7 text-slate-700 sm:text-base">
-                “{testimonial.review}”
-              </p>
-
-              <div className="mt-6 flex items-center gap-1 text-amber-500">
-                <span>★</span>
-                <span>★</span>
-                <span>★</span>
-                <span>★</span>
-                <span>★</span>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-12 rounded-[1.75rem] border border-slate-200 bg-slate-900 px-6 py-8 text-white shadow-lg sm:px-8">
-          <div className="grid gap-8 md:grid-cols-3">
-            <div>
-              <p className="text-3xl font-bold">4.8/5</p>
-              <p className="mt-2 text-sm text-slate-300">
-                Average traveler satisfaction across featured departures
-              </p>
+            <div className="mt-8 border-t border-slate-200 pt-6">
+              <p className="text-lg font-semibold text-slate-950">{featured.name}</p>
+              <p className="mt-1 text-sm text-slate-600">{featured.trip}</p>
             </div>
+          </article>
 
-            <div>
-              <p className="text-3xl font-bold">2,000+</p>
-              <p className="mt-2 text-sm text-slate-300">
-                Happy travelers explored destinations with us
-              </p>
-            </div>
+          <div className="grid gap-6">
+            {secondary.map((testimonial) => (
+              <article
+                key={`${testimonial.name}-${testimonial.trip}`}
+                className="rounded-[28px] border border-slate-300/60 bg-white/80 p-6 shadow-sm"
+              >
+                <p className="text-lg font-semibold text-slate-950">
+                  {testimonial.name}
+                </p>
+                <p className="mt-1 text-sm text-slate-600">
+                  {testimonial.trip}
+                </p>
 
-            <div>
-              <p className="text-3xl font-bold">90%</p>
-              <p className="mt-2 text-sm text-slate-300">
-                Travelers say they would recommend the experience to friends
-              </p>
-            </div>
+                <p className="mt-5 text-sm leading-7 text-slate-600 sm:text-base">
+                  “{testimonial.review}”
+                </p>
+              </article>
+            ))}
           </div>
         </div>
       </Container>
